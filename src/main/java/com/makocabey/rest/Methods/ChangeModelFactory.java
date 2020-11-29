@@ -7,7 +7,7 @@ import com.makocabey.rest.Exceptions.ChangeModelNotFoundException;
 
 public class ChangeModelFactory {
 
-	public static ChangeModelStrategy getChangeModelStrategy(String changeModel) {
+	public static IChangeModelStrategy getChangeModelStrategy(String changeModel) {
 		if(changeModel.equalsIgnoreCase("absolute")) {
 			return new AbsoluteChangeModel();
 		}

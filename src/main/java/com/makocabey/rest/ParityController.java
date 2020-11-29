@@ -21,6 +21,8 @@ import com.makocabey.rest.Exceptions.*;
 import com.makocabey.rest.Methods.*;
 import com.makocabey.rest.Methods.CalculateNonExistParity;
 
+import com.makocabey.rest.Methods.ChangeModel;
+
 
 @RestController
 class ParityController {
@@ -30,7 +32,7 @@ class ParityController {
 	
 	private final CalculateNonExistParity calculateParity;
 	
-	private ChangeModelStrategy changeModelStrategy;
+	private IChangeModelStrategy changeModelStrategy;
 	
 	
 	
@@ -268,7 +270,7 @@ class ParityController {
 			throw new DateNotFoundException(startDate, endDate);
 		
 		
-		ChangeModelStrategy changeStrategy = ChangeModelFactory.getChangeModelStrategy(changeModel);
+		ChangeModel change_Model = new ChangeModel(changeModel);
 		
 		
 		List<Parity> queryResults = repository.getAllBetweenDatesAndParity
@@ -319,7 +321,7 @@ class ParityController {
 			}
 			
 			
-			ChangeModelResult = changeStrategy.CalculateChangeModel(todaysPrice, yesterdaysPrice);
+			ChangeModelResult = change_Model.calculate(todaysPrice, yesterdaysPrice);
 			
 			CustomParityResponse response = new CustomParityResponse(
 					p.getDate(), p.getParityCode(), ChangeModelResult, changeModel);

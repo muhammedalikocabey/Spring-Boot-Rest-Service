@@ -5,7 +5,7 @@ import static java.lang.Math.log;
 
 
 
-public class LogaritmicChangeModel implements ChangeModelStrategy {
+public class LogaritmicChangeModel implements IChangeModelStrategy {
 
 	@Override
 	public Double CalculateChangeModel(Double todaysPrice, Double yesterdaysPrice) {

@@ -2,7 +2,7 @@ package com.makocabey.rest.Methods;
 
 
 
-public class RelativeChangeModel implements ChangeModelStrategy {
+public class RelativeChangeModel implements IChangeModelStrategy {
 
 	@Override
 	public Double CalculateChangeModel(Double todaysPrice, Double yesterdaysPrice) {

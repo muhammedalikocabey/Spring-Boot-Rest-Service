@@ -6,10 +6,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.makocabey.rest.Exceptions.ParityCodeNotFoundException;
-
 import com.makocabey.rest.Parity;
 import com.makocabey.rest.ParityRepository;
+import com.makocabey.rest.Exceptions.ParityCodeNotFoundException;
 
 
 

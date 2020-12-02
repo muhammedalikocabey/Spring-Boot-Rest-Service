@@ -5,7 +5,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -19,9 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.makocabey.rest.Exceptions.*;
 import com.makocabey.rest.Methods.*;
-import com.makocabey.rest.Methods.CalculateNonExistParity;
-
-import com.makocabey.rest.Methods.ChangeModel;
 
 
 @RestController
@@ -30,9 +29,8 @@ class ParityController {
 	@Autowired
 	private final ParityRepository repository;
 	
+	@Autowired
 	private final CalculateNonExistParity calculateParity;
-	
-	private IChangeModelStrategy changeModelStrategy;
 	
 	
 	
@@ -48,10 +46,15 @@ class ParityController {
 		return this.calculateParity.calculateNonExistParity(date, parityCode);
 	}
 	
-	public Double CalculateChangeModel(Double todaysPrice, Double yesterdaysPrice) {
-		return changeModelStrategy.CalculateChangeModel(todaysPrice, yesterdaysPrice);
-	} 
 	
+	
+	static Map<String, ChangeModelFactory> changeModelMap = new TreeMap<String, ChangeModelFactory>
+																(String.CASE_INSENSITIVE_ORDER);
+	static {
+		changeModelMap.put("ABSOLUTE", ChangeModelFactory.ABSOLUTE);
+		changeModelMap.put("RELATIVE", ChangeModelFactory.RELATIVE);
+		changeModelMap.put("LOGARITMIC", ChangeModelFactory.LOGARITMIC);
+	}
 	
 	
 	/* Verileri Listele */
@@ -270,9 +273,6 @@ class ParityController {
 			throw new DateNotFoundException(startDate, endDate);
 		
 		
-		ChangeModel change_Model = new ChangeModel(changeModel);
-		
-		
 		List<Parity> queryResults = repository.getAllBetweenDatesAndParity
 				(startDate, endDate, parityCode);
 		
@@ -305,7 +305,6 @@ class ParityController {
 									(p.getDate().minusDays(1), p.getParityCode())
 										.get(0).getPurchasePrice();
 			}
-			
 			catch (Exception e) {
 				try {
 					Parity yest = calculateNonExistParity
@@ -314,14 +313,13 @@ class ParityController {
 					 yesterdaysPrice = yest.getSalePrice();
 					
 				} 
-				
 				catch (Exception e2) {
 					throw new DateNotFoundException(p.getDate(), p.getParityCode());
 				}
 			}
 			
-			
-			ChangeModelResult = change_Model.calculate(todaysPrice, yesterdaysPrice);
+			ChangeModelResult = changeModelMap.get(changeModel).
+					CalculateChangeModel(todaysPrice, yesterdaysPrice);
 			
 			CustomParityResponse response = new CustomParityResponse(
 					p.getDate(), p.getParityCode(), ChangeModelResult, changeModel);

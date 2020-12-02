@@ -17,7 +17,6 @@
 
 ##### Requests within the service:
 
-```
 - GET:
   - **http://127.0.0.1:8080/** :arrow_right: List All Data
   - **http://127.0.0.1:8080/2020-11-21/** :arrow_right: List data on the requested date
@@ -27,8 +26,6 @@
 - POST:
   - **http://127.0.0.1:8080/** :arrow_right: Check the data sent without distinguishing the day and save all to the database
   - **http://127.0.0.1:8080/2020-11-21** :arrow_right: Check the sent data according to the given day parameter and save all in the database
-
-```
 
 ------------------
 
@@ -58,7 +55,6 @@
 
 ##### Servis içerisindeki istekler:
 
-```
 - GET:
   - **http://127.0.0.1:8080/** :arrow_right: Tüm verileri Listele
   - **http://127.0.0.1:8080/2020-11-21/** :arrow_right: İstenen tarihteki verileri listele
@@ -68,7 +64,5 @@
 - POST:
   - **http://127.0.0.1:8080/** :arrow_right: Gönderilen verileri gün ayırt etmeden kontrol edip veri tabanına kaydet
   - **http://127.0.0.1:8080/2020-11-21** :arrow_right: Gönderilen verileri verilen gün parametresine göre kontrol edip veri tabanına kaydet.
-
-```
 
 ------------------

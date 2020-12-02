@@ -33,8 +33,6 @@ public class RestErrorHandler extends ResponseEntityExceptionHandler {
 
         CustomErrorResponse errors = new CustomErrorResponse();
         errors.setTimestamp(LocalDateTime.now());
-        /**/
-        errors.setStatus(HttpStatus.NOT_FOUND.value());
         errors.setError("Not Found");
         errors.setDetail(ex.getMessage());
         errors.setPath(request.getDescription(false).substring(4));
@@ -53,7 +51,6 @@ public class RestErrorHandler extends ResponseEntityExceptionHandler {
 
         CustomErrorResponse errors = new CustomErrorResponse();
         errors.setTimestamp(LocalDateTime.now());
-        errors.setStatus(HttpStatus.NOT_ACCEPTABLE.value());
         errors.setError("Request Error");
         errors.setDetail(ex.getMessage());
         errors.setPath(request.getDescription(false).substring(4));

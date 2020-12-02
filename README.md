@@ -15,11 +15,12 @@
 &nbsp;
 
 
-##### Requests within the service:
 
 ```
 localhost : 127.0.0.1
 ```
+
+### Requests within the service:
 
 - GET:
   - ```localhost:8080/``` &nbsp; List All Data
@@ -57,11 +58,12 @@ localhost : 127.0.0.1
 &nbsp;
 
 
-##### Servis içerisindeki istekler:
 
 ```
 localhost : 127.0.0.1
 ```
+
+#### Servis içerisindeki istekler:
 
 - GET:
   - ```localhost:8080/``` &nbsp; Tüm verileri Listele

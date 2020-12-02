@@ -22,14 +22,14 @@ localhost : 127.0.0.1
 ```
 
 - GET:
-  - ```localhost:8080/``` :arrow_right: List All Data
-  - ```localhost:8080/2020-11-21/``` :arrow_right: List data on the requested date
-  - ```localhost:8080/2020-11-21/USDTRY``` :arrow_right: List the data in the requested date and parity code
-  - ```localhost:8080/2020-11-21/2020-11-25/USDTRY``` :arrow_right: List data between two requested dates and in the parity code
-  - ```localhost:8080/2020-11-21/2020-11-25/USDTRY/absolute``` :arrow_right: Calculate and list the data between the two requested dates and in the parity code according to the desired return exchange method.
+  - ```localhost:8080/``` &nbsp; List All Data
+  - ```localhost:8080/2020-11-21/``` &nbsp; List data on the requested date
+  - ```localhost:8080/2020-11-21/USDTRY``` &nbsp; List the data in the requested date and parity code
+  - ```localhost:8080/2020-11-21/2020-11-25/USDTRY``` &nbsp; List data between two requested dates and in the parity code
+  - ```localhost:8080/2020-11-21/2020-11-25/USDTRY/absolute``` &nbsp; Calculate and list the data between the two requested dates and in the parity code according to the desired return exchange method.
 - POST:
-  - ```localhost:8080/``` :arrow_right: Check the data sent without distinguishing the day and save all to the database
-  - ```localhost:8080/2020-11-21``` :arrow_right: Check the data of the day sent according to its parameter and save all to the database
+  - ```localhost:8080/``` &nbsp; Check the data sent without distinguishing the day and save all to the database
+  - ```localhost:8080/2020-11-21``` &nbsp; Check the data of the day sent according to its parameter and save all to the database
 
 ------------------
 
@@ -64,13 +64,13 @@ localhost : 127.0.0.1
 ```
 
 - GET:
-  - ```localhost:8080/``` :arrow_right: Tüm verileri Listele
-  - ```localhost:8080/2020-11-21/``` :arrow_right: İstenen tarihteki verileri listele
-  - ```localhost:8080/2020-11-21/USDTRY``` :arrow_right: İstenen tarihteki ve parite kodundaki verileri listele
-  - ```localhost:8080/2020-11-21/2020-11-25/USDTRY``` :arrow_right: İstenen iki tarih arasındaki ve parite kodundaki verileri listele
-  - ```localhost:8080/2020-11-21/2020-11-25/USDTRY/absolute``` :arrow_right: İstenen iki tarih arasındaki ve parite kodundaki verileri istenen getiri değişim metoduna göre hesapla ve listele
+  - ```localhost:8080/``` &nbsp; Tüm verileri Listele
+  - ```localhost:8080/2020-11-21/``` &nbsp; İstenen tarihteki verileri listele
+  - ```localhost:8080/2020-11-21/USDTRY``` &nbsp; İstenen tarihteki ve parite kodundaki verileri listele
+  - ```localhost:8080/2020-11-21/2020-11-25/USDTRY``` &nbsp; İstenen iki tarih arasındaki ve parite kodundaki verileri listele
+  - ```localhost:8080/2020-11-21/2020-11-25/USDTRY/absolute``` &nbsp; İstenen iki tarih arasındaki ve parite kodundaki verileri istenen getiri değişim metoduna göre hesapla ve listele
 - POST:
-  - ```localhost:8080/``` :arrow_right: Gönderilen verileri gün ayırt etmeden kontrol edip veri tabanına kaydet
-  - ```localhost:8080/2020-11-21``` :arrow_right: Gönderilen güne ait verileri parametresine göre kontrol edip veri tabanına kaydet
+  - ```localhost:8080/``` &nbsp; Gönderilen verileri gün ayırt etmeden kontrol edip veri tabanına kaydet
+  - ```localhost:8080/2020-11-21``` &nbsp; Gönderilen güne ait verileri parametresine göre kontrol edip veri tabanına kaydet
 
 ------------------

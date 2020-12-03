@@ -24,7 +24,7 @@ public class CalculateNonExistParity {
 	
 	
 	
-	public Parity calculateNonExistParity(LocalDate date, String parityCode) 
+	public final Parity calculateNonExistParity(LocalDate date, String parityCode) 
 			throws ParityCodeNotFoundException {
 		
 		parityCode = parityCode.toUpperCase();

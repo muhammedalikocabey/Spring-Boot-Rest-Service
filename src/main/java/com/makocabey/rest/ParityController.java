@@ -23,6 +23,7 @@ import com.makocabey.rest.Exceptions.*;
 import com.makocabey.rest.Methods.*;
 
 
+
 @RestController
 class ParityController {
 	
@@ -57,9 +58,10 @@ class ParityController {
 	}
 	
 	
+	
 	/* Verileri Listele */
 	@GetMapping("/")
-	public List<Parity> listAll() 
+	public List<Parity> listAllData() 
 		throws DatabaseEmptyException {
 		
 		List<Parity> queryRes =  repository.findAll();
@@ -73,7 +75,7 @@ class ParityController {
 	
 	
 	@PostMapping("")
-	public ResponseEntity<String> insertAllDays(
+	public ResponseEntity<String> insertDataFromAllDays(
 			@RequestBody List<Parity> newParites) 
 				throws CurrencyLessThanZeroException, 
 				IncorrectParityCodeFormatException {
@@ -117,7 +119,7 @@ class ParityController {
 	
 	/* 1. Bir tarihte verilen parite data listesinin veritabanına kaydedilmesi. */
 	@PostMapping("/{date}")
-	public ResponseEntity<String>  insertNewEntitiesWithDate(
+	public ResponseEntity<String>  insertNewDataWithDate(
 			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date, 
 			@RequestBody List<Parity> newParites) 
 				throws EntityElementDuplicatedException, 
@@ -158,7 +160,7 @@ class ParityController {
 	
 	/* 2. İstenen tarihteki kaydedilmiş parite data listesinin listelenmesi. */
 	@GetMapping("/{date}")
-	public List<Parity> listByDate(
+	public List<Parity> listDataByDate(
 			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) 
 				throws DateNotFoundException {
 		
@@ -179,7 +181,7 @@ class ParityController {
 	 *    mevcut parite datalarından hesaplanması.
 	*/
 	@GetMapping("/{date}/{parityCode}")
-	public Parity listByDateAndParite(
+	public Parity listDataByDateAndParityCode(
 			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date,
 			@PathVariable String parityCode) 
 				throws DateNotFoundException, 
@@ -211,7 +213,7 @@ class ParityController {
 	 *    ortalama fiyat datasının listelenmesi.
 	*/
 	@GetMapping("/{startDate}/{endDate}/{parityCode}")
-	public List<Parity> ListByPariteAndBetweenDays(
+	public List<Parity> ListDataByParityCodeBetweenDays(
 			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate, 
 			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate,
 			@PathVariable String parityCode) 
@@ -253,7 +255,7 @@ class ParityController {
 	 * getiri değişiminin hesaplanıp listelenmesi.
 	*/ 
 	@GetMapping("/{startDate}/{endDate}/{parityCode}/{changeModel}")
-	public List<CustomParityResponse> calculateBetweenDateAndParite(
+	public List<CustomParityResponse> calculateMethodByParityCodeBetweenDates(
 			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate, 
 			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate,
 			@PathVariable String parityCode,

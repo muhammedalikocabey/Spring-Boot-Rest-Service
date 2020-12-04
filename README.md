@@ -12,6 +12,11 @@
 - Factory Pattern changed to be applied with Enum data type.
 - Separately handled Exceptions were defined by a function for each Exception in the RestErrorHandler defined by @ControllerAdvice Annotation. These functions were divided into 2 different functions according to their Http Status, and instead of giving Exceptions as a value to a function for each Exception collectively, 2 separate functions were given parameters collectively.
 - XMLParser Service was created in order to log parity data in XML format published on the [TCMB website](https://www.tcmb.gov.tr/kurlar/today.xml) on a daily basis in the database.
+<<<<<<< HEAD
+=======
+  - Case 1: This service is called in SpringBootApplication.run() method to run when REST Service is run. [Commit](https://github.com/muhammedalikocabey/Spring-Boot-Rest-Service/commit/3b35ba6e2a5c12eb33de124e8516b7a7b1d1e758) for Detail.
+
+>>>>>>> 99193c3 (XMLParser Case 1 added to README.md)
 
 
 
@@ -53,6 +58,10 @@
 - Factory Pattern'i Enum veri tipi ile uygulanacak şekilde değiştirildi.  
 - Ayrı ayrı olarak ele alınan Exception'lar @ControllerAdvice Annotation'ı ile tanımlanan RestErrorHandler içerisinde her Exception için bir fonksiyon tanımlanmış şekildeydi. Bu fonksiyonlar Http Status'lerine göre 2 ayrı fonksiyona ayrıldı ve Exception'lar value şeklinde toplu olarak her Exception için bir fonksiyona parametre olarak verilmek yerine 2 ayrı fonksiyona toplu olarak parametre verildi.  
 - Günlük olarak [TCMB sitesinde](https://www.tcmb.gov.tr/kurlar/today.xml) yayınlanan XML formatındaki parite verilerini veritabanına günlük olarak kaydedebilmek için XMLParser Service'i oluşturuldu.
+<<<<<<< HEAD
+=======
+  - Durum 1: Bu hizmetin REST servis çalıştığında çalışması için SpringBootApplication.run() metodunda çalıştırılır. Detay için [Commit](https://github.com/muhammedalikocabey/Spring-Boot-Rest-Service/commit/3b35ba6e2a5c12eb33de124e8516b7a7b1d1e758)
+>>>>>>> 99193c3 (XMLParser Case 1 added to README.md)
 
 
 &nbsp;

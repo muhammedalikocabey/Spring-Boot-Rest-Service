@@ -11,6 +11,8 @@
 - When unwanted situations occur in the requests sent by the user, the control of these situations was made with **Controller Advice Annotation** as **Global Exception Handling**. Each undesirable situation that occurred was handled separately.
 - Factory Pattern changed to be applied with Enum data type.
 - Separately handled Exceptions were defined by a function for each Exception in the RestErrorHandler defined by @ControllerAdvice Annotation. These functions were divided into 2 different functions according to their Http Status, and instead of giving Exceptions as a value to a function for each Exception collectively, 2 separate functions were given parameters collectively.
+- XMLParser Service was created in order to log parity data in XML format published on the [TCMB website](https://www.tcmb.gov.tr/kurlar/today.xml) on a daily basis in the database.
+
 
 
 &nbsp;
@@ -50,6 +52,7 @@
 - Kullanıcı tarafından gönderilen request'lerde istenmeyen durumlar oluştuğunda bu durumların kontrolü **Global Exception Handler** ile ve **Global Advice Annotation** ile yapıldı. Ortaya çıkan her istenmeyen durum ayrı ayrı ele alındı.
 - Factory Pattern'i Enum veri tipi ile uygulanacak şekilde değiştirildi.  
 - Ayrı ayrı olarak ele alınan Exception'lar @ControllerAdvice Annotation'ı ile tanımlanan RestErrorHandler içerisinde her Exception için bir fonksiyon tanımlanmış şekildeydi. Bu fonksiyonlar Http Status'lerine göre 2 ayrı fonksiyona ayrıldı ve Exception'lar value şeklinde toplu olarak her Exception için bir fonksiyona parametre olarak verilmek yerine 2 ayrı fonksiyona toplu olarak parametre verildi.  
+- Günlük olarak [TCMB sitesinde](https://www.tcmb.gov.tr/kurlar/today.xml) yayınlanan XML formatındaki parite verilerini veritabanına günlük olarak kaydedebilmek için XMLParser Service'i oluşturuldu.
 
 
 &nbsp;

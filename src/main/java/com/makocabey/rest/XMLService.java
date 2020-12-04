@@ -1,7 +1,7 @@
 package com.makocabey.rest;
 
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -10,6 +10,8 @@ import org.w3c.dom.NodeList;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -19,22 +21,16 @@ import org.slf4j.LoggerFactory;
 
 
 
-@Service
+@Component
 public class XMLService {
 
 	private final Logger log = LoggerFactory.getLogger(XMLService.class);
-
-	
-	private final ParityRepository repository;
-	
-	public XMLService(ParityRepository repository) {
-		this.repository = repository; 
-	}
 	
 	
 	
-	public void parseAndSaveParityData() { 
+	public List<Parity> parseAndSaveParityData() { 
 		
+		List<Parity> listOfParity = new ArrayList<>();
 		
 		try {
 			String URL = "https://www.tcmb.gov.tr/kurlar/today.xml";
@@ -77,9 +73,7 @@ public class XMLService {
 					
 					Parity parity = new Parity(parityCode, date, purchasePrice, salePrice, averagePrice);
 					
-					
-					repository.save(parity);
-					
+					listOfParity.add(parity);
 				}
 				
 			}
@@ -90,6 +84,8 @@ public class XMLService {
 		catch (Exception e) {
 			log.error(e.getMessage());
 		}
+		
+		return listOfParity;
 	}
 	
 }

@@ -9,14 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class SpringRestServiceApplication implements CommandLineRunner {
-
-	private XMLService xmlService;
-	
-	public SpringRestServiceApplication(XMLService xmlService) {
-		this.xmlService = xmlService;
-	}
-	
+public class SpringRestServiceApplication {
 	
 	public static void main(String[] args) {
 		
@@ -24,12 +17,5 @@ public class SpringRestServiceApplication implements CommandLineRunner {
 		
 		app.setBannerMode(Banner.Mode.OFF);
 		app.run(args);
-	}
-	
-	
-	
-	@Override
-	public void run(String...args) throws Exception {
-		xmlService.parseAndSaveParityData();
 	}
 }

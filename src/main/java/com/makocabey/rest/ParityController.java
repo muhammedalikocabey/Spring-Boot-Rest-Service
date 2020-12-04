@@ -33,13 +33,16 @@ class ParityController {
 	@Autowired
 	private final CalculateNonExistParity calculateParity;
 	
-	
+	@Autowired
+	private final XMLService xmlService;
 	
 	ParityController(ParityRepository repository, 
-			CalculateNonExistParity calculateParity) {
+			CalculateNonExistParity calculateParity,
+			XMLService xmlService) {
 		
 		this.repository = repository;
 		this.calculateParity = calculateParity;
+		this.xmlService = xmlService;
 	}
 	
 	
@@ -330,5 +333,24 @@ class ParityController {
 		}
 		
 		return listOfResponse;
+	}
+	
+	
+	
+	
+	
+	@GetMapping("/dailyparity") 
+	public ResponseEntity<String>  getDailyParityData() {
+		List<Parity> listOfParity = xmlService.parseAndSaveParityData();
+		
+		LocalDate todaysDate = listOfParity.get(0).getDate();
+		
+		if(!((repository.findByDate(todaysDate)).isEmpty())) {
+			repository.deleteByDate(todaysDate);
+		}
+		
+		repository.saveAll(listOfParity);
+		
+		return new ResponseEntity<String>("The parity data of day{" + todaysDate + "} has been successfully saved to the database.", HttpStatus.OK);
 	}
 }

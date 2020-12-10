@@ -28,7 +28,8 @@ public class XMLService {
 	
 	
 	
-	public List<Parity> parseAndSaveParityData() { 
+	public List<Parity> parseAndSaveParityData() 
+			throws Exception { 
 		
 		List<Parity> listOfParity = new ArrayList<>();
 		
@@ -82,7 +83,7 @@ public class XMLService {
 		}
 		
 		catch (Exception e) {
-			log.error(e.getMessage());
+			throw e;
 		}
 		
 		return listOfParity;

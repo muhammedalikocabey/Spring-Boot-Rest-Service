@@ -340,7 +340,9 @@ class ParityController {
 	
 	
 	@GetMapping("/dailyparity") 
-	public ResponseEntity<String>  getDailyParityData() {
+	public ResponseEntity<String>  getDailyParityData() 
+			throws Exception {
+		
 		List<Parity> listOfParity = xmlService.parseAndSaveParityData();
 		
 		LocalDate todaysDate = listOfParity.get(0).getDate();

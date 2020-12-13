@@ -14,6 +14,8 @@
 - XMLParser Service was created in order to log parity data in XML format published on the [TCMB website](https://www.tcmb.gov.tr/kurlar/today.xml) on a daily basis in the database.
   - Case 1: This service is called in SpringBootApplication.run() method to run when REST Service is run. [Commit](https://github.com/muhammedalikocabey/Spring-Boot-Rest-Service/commit/3b35ba6e2a5c12eb33de124e8516b7a7b1d1e758) for Detail.
   - Case 2 : When the user makes a GET request, XMLParser runs within the request. [Commit](https://github.com/muhammedalikocabey/Spring-Boot-Rest-Service/commit/cdd2cd5969f3b83eb5ce116d06c975da4ac6cd64) for Detail
+- Cron Scheduler was added to keep the data up-to-date as the data was updated daily at the market closing (17.00).
+
 
 
 
@@ -29,6 +31,7 @@
   - ```127.0.0.1:8080/2020-11-21/USDTRY``` &nbsp; List the data in the requested date and parity code
   - ```127.0.0.1:8080/2020-11-21/2020-11-25/USDTRY``` &nbsp; List data between two requested dates and in the parity code
   - ```127.0.0.1:8080/2020-11-21/2020-11-25/USDTRY/absolute``` &nbsp; Calculate and list the data between the two requested dates and in the parity code according to the desired return exchange method.
+  - ```127.0.0.1:8080/dailyparity``` Scrap daily updated data from the TCMB website. 
 - POST:
   - ```127.0.0.1:8080/``` &nbsp; Check the data sent without distinguishing the day and save all to the database
   - ```127.0.0.1:8080/2020-11-21``` &nbsp; Check the data of the day sent according to its parameter and save all to the database
@@ -58,7 +61,7 @@
 - Günlük olarak [TCMB sitesinde](https://www.tcmb.gov.tr/kurlar/today.xml) yayınlanan XML formatındaki parite verilerini veritabanına günlük olarak kaydedebilmek için XMLParser Service'i oluşturuldu.
   - Durum 1: Bu hizmetin REST servis çalıştığında çalışması için SpringBootApplication.run() metodunda çalıştırılır. Detay için [Commit](https://github.com/muhammedalikocabey/Spring-Boot-Rest-Service/commit/3b35ba6e2a5c12eb33de124e8516b7a7b1d1e758)
   - Durum 2 :XMLParser kullanıcı GET istek attığında bu istek içerisinde çalışır. Detay için [Commit](https://github.com/muhammedalikocabey/Spring-Boot-Rest-Service/commit/cdd2cd5969f3b83eb5ce116d06c975da4ac6cd64)
-
+- Veriler piyasaların kapanışında(17.00) günlük olarak yenilendiğinden verileri güncel tutmak için Cron Scheduler eklendi.
 
 &nbsp;
 
@@ -71,6 +74,7 @@
   - ```127.0.0.1:8080/2020-11-21/USDTRY``` &nbsp; İstenen tarihteki ve parite kodundaki verileri listele
   - ```127.0.0.1:8080/2020-11-21/2020-11-25/USDTRY``` &nbsp; İstenen iki tarih arasındaki ve parite kodundaki verileri listele
   - ```127.0.0.1:8080/2020-11-21/2020-11-25/USDTRY/absolute``` &nbsp; İstenen iki tarih arasındaki ve parite kodundaki verileri istenen getiri değişim metoduna göre hesapla ve listele
+  - ```127.0.0.1:8080/dailyparity``` Günlük güncel verileri TCMB sitesinden kazı. 
 - POST:
   - ```127.0.0.1:8080/``` &nbsp; Gönderilen verileri gün ayırt etmeden kontrol edip veri tabanına kaydet
   - ```127.0.0.1:8080/2020-11-21``` &nbsp; Gönderilen güne ait verileri parametresine göre kontrol edip veri tabanına kaydet

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -338,6 +339,21 @@ class ParityController {
 	
 	
 	
+	@Scheduled(cron = "0 0 17 * * * ", zone="Europe/Istanbul") 
+	public void scheduledParser() 
+			throws Exception {
+		
+		List<Parity> listOfParity = xmlService.parseAndSaveParityData();
+		
+		LocalDate todaysDate = listOfParity.get(0).getDate();
+		
+		if(!((repository.findByDate(todaysDate)).isEmpty())) {
+			repository.deleteByDate(todaysDate);
+		}
+		
+		repository.saveAll(listOfParity);
+	}
+	
 	
 	@GetMapping("/dailyparity") 
 	public ResponseEntity<String>  getDailyParityData() 
@@ -353,6 +369,7 @@ class ParityController {
 		
 		repository.saveAll(listOfParity);
 		
-		return new ResponseEntity<String>("The parity data of day{" + todaysDate + "} has been successfully saved to the database.", HttpStatus.OK);
+		return new ResponseEntity<String>("The parity data of day {" + todaysDate + "} has been successfully saved to the database.", HttpStatus.OK);
 	}
+	
 }

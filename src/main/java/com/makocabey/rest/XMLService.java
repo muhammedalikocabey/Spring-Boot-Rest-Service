@@ -1,6 +1,7 @@
 package com.makocabey.rest;
 
 
+
 import org.springframework.stereotype.Component;
 
 import org.w3c.dom.Document;
@@ -16,20 +17,14 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 
 
 @Component
 public class XMLService {
-
-	private final Logger log = LoggerFactory.getLogger(XMLService.class);
-	
-	
-	
+			
 	public List<Parity> parseAndSaveParityData() 
 			throws Exception { 
+		
 		
 		List<Parity> listOfParity = new ArrayList<>();
 		
@@ -63,12 +58,21 @@ public class XMLService {
 				if(node.getNodeType() == Node.ELEMENT_NODE) {
 					Element elem = (Element) node;
 					
+					
 					String parityCode = (elem.getAttribute("CurrencyCode") + "TRY");
+					
+					if (parityCode.equalsIgnoreCase("XDRTRY")) {
+						continue;
+					}
+					
 					Integer unit = Integer.parseInt(elem.getElementsByTagName("Unit").item(0).getTextContent());
+					
 					Double purchasePrice = Double.parseDouble(elem.getElementsByTagName("ForexBuying").item(0).getTextContent());
 					purchasePrice /= unit;
+					
 					Double salePrice = Double.parseDouble(elem.getElementsByTagName("ForexSelling").item(0).getTextContent());
 					salePrice /= unit;
+					
 					Double averagePrice = (purchasePrice + salePrice) / 2;
 					
 					
